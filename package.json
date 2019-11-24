@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon --exec babel-node index.js"
   },
   "author": "doyoun jeong",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1" 
   }
 }
