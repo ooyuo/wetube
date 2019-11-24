@@ -9,6 +9,13 @@ const handleHome = (req, res) =>  res.send('hello from my ass');
 
 const handleProfile = (req, res) => res.send("you are on my profile");
 
-app.get("/", handleHome); // route 생성
+const betweenHome = (req, res, next) => {
+    console.log("Between");
+    next();
+}
+app.use(betweenHome); // middleware
+
+app.get("/", handleHome); // route 반환
 app.get("/profile", handleProfile);
+
 app.listen(PORT, handleListening);
