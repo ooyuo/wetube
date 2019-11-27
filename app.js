@@ -3,13 +3,11 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import { userRouter } from "./router";
+import userRouter from "./routers/userRouter";
+import vedioRouter from "./routers/vedioRouter";
+import globalRouter from "./routers/globalRouter";
 
 const app = express(); // server생성
-
-const handleHome = (req, res) =>  res.send('hello from my ass');
-
-const handleProfile = (req, res) => res.send("you are on my profile");
 
 // middleware
 app.use(cookieParser()); //cookie에 user infomation 저장
@@ -18,10 +16,10 @@ app.use(bodyParser.urlencoded({extended: true})); //body의 url을 얻게 해줌
 app.use(helmet()); // 보안을 위해 사용
 app.use(morgan("dev")); // 모든걸 기록(?)
 
-app.get("/", handleHome); // route 반환
-app.get("/profile", handleProfile);
 
 app.use("/user", userRouter);
+app.use("/vedio", vedioRouter);
+app.use("/", globalRouter); // join, search, about page, home...
 
 
 export default app;
