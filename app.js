@@ -1,13 +1,11 @@
-import express from "express" // express라는 이름을 내 파일들안에서 찾고, 못찾으면 node_modules> express> index.js 순으로 찾는다.
+import express from "express"; // express라는 이름을 내 파일들안에서 찾고, 못찾으면 node_modules> express> index.js 순으로 찾는다.
 import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import { userRouter } from "./router";
 
-const app = express() // server생성
-const PORT = 4000;
-
-const handleListening = () => console.log(`listening on: http://localhost:${PORT}`);
+const app = express(); // server생성
 
 const handleHome = (req, res) =>  res.send('hello from my ass');
 
@@ -23,4 +21,7 @@ app.use(morgan("dev")); // 모든걸 기록(?)
 app.get("/", handleHome); // route 반환
 app.get("/profile", handleProfile);
 
-app.listen(PORT, handleListening);
+app.use("/user", userRouter);
+
+
+export default app;
