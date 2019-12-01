@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
+import routes from "./routes";
 
 const app = express(); // server생성
 
@@ -17,9 +18,9 @@ app.use(helmet()); // 보안을 위해 사용
 app.use(morgan("dev")); // 모든걸 기록(?)
 
 
-app.use("/user", userRouter);
-app.use("/video", videoRouter);
-app.use("/", globalRouter); // join, search, about page, home...
+app.use(routes.home, globalRouter); // join, search, about page, home...
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 
 export default app;
