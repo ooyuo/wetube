@@ -4,7 +4,7 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import userRouter from "./routers/userRouter";
-import vedioRouter from "./routers/vedioRouter";
+import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 
 const app = express(); // server생성
@@ -18,7 +18,7 @@ app.use(morgan("dev")); // 모든걸 기록(?)
 
 
 app.use("/user", userRouter);
-app.use("/vedio", vedioRouter);
+app.use("/video", videoRouter);
 app.use("/", globalRouter); // join, search, about page, home...
 
 
