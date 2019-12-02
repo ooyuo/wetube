@@ -11,11 +11,11 @@ import routes from "./routes";
 const app = express(); // server생성
 
 // middleware
-app.use(cookieParser()); //cookie에 user infomation 저장
-app.use(bodyParser.json()); //body의 json을 얻게 해줌
+app.use(cookieParser()); // cookie를 전달받아서 사용할 수 있도록 만들어주는 미들웨어
+app.use(bodyParser.json()); // 사용자가 웹사이트로 전달하는 정보들을 검사하는 미들웨어, request정보에서 form이나 json형태로된 vody를 검사한다
 app.use(bodyParser.urlencoded({extended: true})); //body의 url을 얻게 해줌
-app.use(helmet()); // 보안을 위해 사용
-app.use(morgan("dev")); // 모든걸 기록(?)
+app.use(helmet()); // application이 더 안전하도록 만들어준다.
+app.use(morgan("dev")); // application에서 발생하는 모든 일들을 logging한다.
 
 
 app.use(routes.home, globalRouter); // join, search, about page, home...
