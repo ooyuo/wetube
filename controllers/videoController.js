@@ -1,4 +1,4 @@
-export const home = (req, res) => res.send("Home");
+export const home = (req, res) => res.render("home"); // render함수의 인자로 템플릿 파일의 이름을 입력하면됨
 export const search = (req, res) => res.send("Search");
 export const videos = (req, res) => res.send("Videos");
 export const upload = (req, res) => res.send("Upload");
