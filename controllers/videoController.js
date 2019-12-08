@@ -1,7 +1,6 @@
-export const home = (req, res) => res.render("home"); // render함수의 인자로 템플릿 파일의 이름을 입력하면됨
-export const search = (req, res) => res.send("Search");
-export const videos = (req, res) => res.send("Videos");
-export const upload = (req, res) => res.send("Upload");
-export const videoDetail = (req, res) => res.send("Video Detail");
-export const editVideo = (req, res) => res.send("Edit Video");
-export const deleteVideo = (req, res) => res.send("Delete Video");
+export const home = (req, res) => res.render("home", { pageTitle: "Home" }); // render함수의 첫번째인자: 템플릿, 두번째인자: 추가할 정보가 담긴 객체
+export const search = (req, res) => res.render("search", { pageTitle: "Search", });
+export const upload = (req, res) => res.render("upload", { pageTitle: "Upload"});
+export const videoDetail = (req, res) => res.render("Video Detail", { pageTitle: "Video Detail"});
+export const editVideo = (req, res) => res.render("Edit Video", { pageTitle: "Edit Video"});
+export const deleteVideo = (req, res) => res.render("Delete Video", { pageTitle: "Delete Video"});
