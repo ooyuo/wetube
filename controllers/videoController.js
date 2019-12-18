@@ -2,10 +2,12 @@ export const home = (req, res) => res.render("home", { pageTitle: "Home" }); // 
 
 export const search = (req, res) => {
     //const searchingBy = req.query.term;
+    console.log(req.query);
     const {
         query: { term: searchingBy }
     } = req; //윗줄코드와 같음
     res.render("search", { pageTitle: "Search", searchingBy});
+    //res.render("search", { pageTitle: "Search", searchingBy: searchingBy}); 와 같음
 }
 
 export const upload = (req, res) => 
