@@ -1,4 +1,8 @@
-export const home = (req, res) => res.render("home", { pageTitle: "Home" }); // render함수의 첫번째인자: 템플릿, 두번째인자: 추가할 정보가 담긴 객체
+import { videos } from "../db";
+
+export const home = (req, res) => {
+    res.render("home", { pageTitle: "Home", videos });
+}; // render함수의 첫번째인자: 템플릿, 두번째인자: 추가할 정보가 담긴 객체
 
 export const search = (req, res) => {
     //const searchingBy = req.query.term;
