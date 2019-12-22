@@ -10,7 +10,7 @@ export const search = (req, res) => {
     const {
         query: { term: searchingBy }
     } = req; //윗줄코드와 같음
-    res.render("search", { pageTitle: "Search", searchingBy});
+    res.render("search", { pageTitle: "Search", searchingBy, videos});
     //res.render("search", { pageTitle: "Search", searchingBy: searchingBy}); 와 같음
 }
 

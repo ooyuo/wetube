@@ -21,12 +21,8 @@ app.use(bodyParser.urlencoded({extended: true})); //body의 url을 얻게 해줌
 app.use(morgan("dev")); // application에서 발생하는 모든 일들을 logging한다.
 app.use(localsMiddleware);
 
-
-
-
 app.use(routes.home, globalRouter); // join, search, about page, home...
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
-
 
 export default app;
