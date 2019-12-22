@@ -19,9 +19,16 @@ export const postJoin = (req, res) => {
     }
 };
 
-export const login = (req, res) => res.render("Login", { pateTitle: "Log In"});
-export const logout = (req, res) => res.render("Logout", { pateTitle: "Log Out"});
-export const users = (req, res) => res.render("Users", { pateTitle: "Users"});
-export const userDetail = (req, res) => res.render("UserDetail", { pateTitle: "User Detail"});
-export const editProfile = (req, res) => res.render("EditProfile", { pateTitle: "Edit Profile"});
-export const changePassword = (req, res) => res.render("ChangePassword", { pateTitle: "Change Password"}); // ""안에있는 라우터명은 routes파일의 객체명과 일치해야함
+export const getLogin = (req, res) => {
+    res.render("login", { pateTitle: "Log In"});
+};
+
+export const postLogin = (req, res) => {
+    res.redirect(routes.home);
+};
+
+export const logout = (req, res) => res.render("logout", { pateTitle: "Log Out"});
+export const users = (req, res) => res.render("users", { pateTitle: "Users"});
+export const userDetail = (req, res) => res.render("userDetail", { pateTitle: "User Detail"});
+export const editProfile = (req, res) => res.render("editProfile", { pateTitle: "Edit Profile"});
+export const changePassword = (req, res) => res.render("changePassword", { pateTitle: "Change Password"}); // ""안에있는 라우터명은 routes파일의 객체명과 일치해야함
