@@ -1,7 +1,14 @@
 import routes from "../routes";
+import Video from "../models/Video";
 
-export const home = (req, res) => {
-    res.render("home", { pageTitle: "Home", videos });
+export const home = async (req, res) => {
+    try {
+        const videos = await Video.find({});
+        res.render("home", { pageTitle: "Home", videos }); // Video라는 model을 다 찾고나서 home page를 render한다.
+    } catch (error) {
+        console.log(error);
+        res.render("home", { pageTitle: "Home", videos: []}); // video라는 model을 찾을때 error가 발생해도 home을 render한다.(videos라는 db가 빈 채로)
+    }
 }; // render함수의 첫번째인자: 템플릿, 두번째인자: 추가할 정보가 담긴 객체
 
 export const search = (req, res) => {
