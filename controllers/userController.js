@@ -24,11 +24,11 @@ export const getLogin = (req, res) => {
 };
 
 export const postLogin = (req, res) => {
-    res.redirect(routes.home);
+    res.redirect(routes.home); // res.redirect("/");
 };
 
 export const logout = (req, res) => {
-    res.redirect(routes.home);
+    res.redirect(routes.home); // res.redirect("/");
 };
 
 export const users = (req, res) => res.render("users", { pageTitle: "Users"});

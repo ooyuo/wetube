@@ -19,7 +19,7 @@ export const search = (req, res) => {
     } = req; //윗줄코드와 같음
     res.render("search", { pageTitle: "Search", searchingBy, videos});
     //res.render("search", { pageTitle: "Search", searchingBy: searchingBy}); 와 같음
-}
+};
 
 export const getUpload = (req, res) => 
 res.render("upload", { pageTitle: "Upload"});
@@ -36,7 +36,7 @@ export const postUpload = async (req, res) => {
        description 
     });
     res.redirect(routes.videoDetail(newVideo.id));
-}
+};
 
 export const videoDetail = (req, res) => 
 res.render("videoDetail", { pageTitle: "Video Detail"});
