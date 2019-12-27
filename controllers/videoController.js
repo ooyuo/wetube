@@ -15,7 +15,7 @@ export const search = (req, res) => {
     //const searchingBy = req.query.term;
     console.log(req.query);
     const {
-        query: { term: searchingBy }
+        query: { term: searchingBy } // query로 term(단어)를 받는다.
     } = req; //윗줄코드와 같음
     res.render("search", { pageTitle: "Search", searchingBy, videos});
     //res.render("search", { pageTitle: "Search", searchingBy: searchingBy}); 와 같음
@@ -38,8 +38,19 @@ export const postUpload = async (req, res) => {
     res.redirect(routes.videoDetail(newVideo.id));
 };
 
-export const videoDetail = (req, res) => 
-res.render("videoDetail", { pageTitle: "Video Detail"});
+export const videoDetail = async (req, res) => {
+    const {
+        params: {id}
+    } = req;
+    
+    try {
+        const video = await Video.findById(id);
+        res.render("videoDetail", { pageTitle: "Video Detail", video });
+    } catch(error) {
+        console.log(error);
+        res.redirect(routes.home);
+    }
+}
 
 export const editVideo = (req, res) => 
 res.render("editVideo", { pageTitle: "Edit Video"});
