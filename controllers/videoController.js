@@ -57,3 +57,6 @@ res.render("editVideo", { pageTitle: "Edit Video"});
 
 export const deleteVideo = (req, res) => 
 res.render("deleteVideo", { pageTitle: "Delete Video"});
+
+
+
