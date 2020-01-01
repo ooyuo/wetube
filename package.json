@@ -16,6 +16,10 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.19.1",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
     "mongoose": "^5.8.2",
@@ -24,6 +28,8 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.17.0",
     "nodemon": "^2.0.1"
   }
 }

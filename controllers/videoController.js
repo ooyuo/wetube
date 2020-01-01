@@ -3,7 +3,7 @@ import Video from "../models/Video";
 
 export const home = async (req, res) => {
     try {
-        const videos = await Video.find({});
+        const videos = await Video.find({}).sort({ _id: -1 }); // 내림차순으로 정렬
         res.render("home", { pageTitle: "Home", videos }); // Video라는 model을 다 찾고나서 home page를 render한다.
     } catch (error) {
         console.log(error);

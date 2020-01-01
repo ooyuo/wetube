@@ -23,12 +23,13 @@ directory는 "upload/" => "uploads/"로 가면 "uploads"라는 directory로 들�
 app.use("/uploads", express.static("uploads"));
 app.use(cookieParser()); // cookie를 전달받아서 사용할 수 있도                                                                                                                                                                                                                                                                                                                                                                                록 만들어주는 미들웨어
 app.use(bodyParser.json()); // 사용자가 웹사이트로 전달하는 정보들을 검사하는 미들웨어, request정보에서 form이나 json형태로된 body를 검사한다
-app.use(bodyParser.urlencoded({extended: true})); //body의 url을 얻게 해줌
+app.use(bodyParser.urlencoded({extended: true})); // body의 url을 얻게 해줌
 app.use(morgan("dev")); // application에서 발생하는 모든 일들을 logging한다.
 app.use(localsMiddleware);
-
 app.use(routes.home, globalRouter); // join, search, about page, home...
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
 
 export default app;
+
+
