@@ -29,12 +29,8 @@ export const search = (req, res) => {
     } = req; // 윗줄코드와 같음
     res.render("search", {
         pageTitle: "Search",
-<<<<<<< HEAD
         searchingBy,
         videos
-=======
-        searchingBy
->>>>>>> 45261b38c5333d98ec436428d7051f245d0260de
     });
     // res.render("search", { pageTitle: "Search", searchingBy: searchingBy}); 와 같음
 };
