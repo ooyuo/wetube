@@ -4,8 +4,8 @@
   "description": "cloning youtube with vanilla and nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node init.js --delay 2"
+    "dev:server": "nodemon --exec babel-node init.js --delay 2",
+    "dev:assets": "webpack"
   },
   "author": "doyoun jeong",
   "license": "ISC",
@@ -26,7 +26,9 @@
     "mongoose": "^5.8.2",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
