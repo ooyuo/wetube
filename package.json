@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "cloning youtube with vanilla and nodejs",
   "scripts": {
-    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static' ",
+    "dev:server": "nodemon --exec babel-node init.js --delay 2",
     "dev:assets": "cross-env WEBPACK_ENV=npx webpack --mode development -w",
     "build": "webpack --mode development  --config ./webpack.config.js",
     "build:assets": "cross-env WEBPACK_ENV=production webpack",
@@ -18,6 +18,7 @@
     "@babel/node": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "autoprefixer": "^9.7.3",
+    "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cross-env": "^6.0.3",

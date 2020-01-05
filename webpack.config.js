@@ -3,11 +3,11 @@ const autoprefixer = require("autoprefixer");
 const ExtractCSS = require("extract-text-webpack-plugin");
 
 const MODE = process.env.WEBPACK_ENV;
-const ENTRY_FILE = path.resolve(__dirname, "src", "assets", "js", "main.js");
+const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
 const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config = {
-    entry: ENTRY_FILE,
+    entry: ["@babel/polyfill", ENTRY_FILE],
     mode: MODE,
     module: {
         /*
@@ -20,6 +20,14 @@ const config = {
         */
         rules: [
             {
+                test: /\.(js)$/,
+                use: [
+                    {
+                        loader: "babel-loader"
+                    }
+                ]
+            },
+            {
                 test: /\.(scss)$/, // scss의 파일을 전부 찾아줌
                 use: ExtractCSS.extract([
                     {
@@ -29,7 +37,7 @@ const config = {
                     {
                         loader: "postcss-loader", // 2- css를 받아서 이 loader한테 주는 플러그인을 가지고 css를 변환함(css 호환성)
                         options: {
-                            plugin() {
+                            plugins() {
                                 return [autoprefixer({ browsers: "cover 99.5%" })];
                             }
                         }
