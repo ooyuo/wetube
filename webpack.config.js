@@ -53,7 +53,7 @@ const config = {
         path: OUTPUT_DIR,
         filename: "[name].js"
     },
-    plugins: [new ExtractCSS("styles.css")]
-};
+    plugins: [new ExtractCSS("styles.css")] // plugins 설치, 저장할 파일의 이름을 넣는다.
+}; 
 
 module.exports = config;

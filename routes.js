@@ -16,7 +16,7 @@ const CHANGE_PASSWORD = "users/change-password";
 
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
-const VIDEO_DETAIL = "/:id"; //express가 이 값은 변하는 값인걸 알수있음
+const VIDEO_DETAIL = "/:id"; // express가 이 값은 변하는 값인걸 알수있음
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
 
