@@ -10,19 +10,19 @@
         grid-template-columns: repeat(3, 1fr); // 3컬럼 그리드 템플릿, 1fr: 남는 자유 공간의 1/3만큼의 크기를 할당한다.
         align-items: center;
         .header__column {
-            i {
+            i { // 아이콘
                 color: white;
                 font-size: 30px;
             }
-            &:nth-child(2) { // header__column에서 두번째 요소
+            &:nth-child(2) { // header__column에서 두번째 요소 = input창
                 width: 100%;
                 justify-self: center; // 가운데 정렬
             }
-            &:last-child {
-                justify-self: end;
+            &:last-child { // navigator
+                justify-self: end; // 오른쪽 정렬
             }
             ul {
-                display: flex; // 수평으로
+                display: flex; // 수평으로 뉘여진다.
                 color: white;
                 font-weight: 600;
                 text-transform: uppercase;
@@ -39,7 +39,7 @@
                     font-size: 14px;
                     color: $black;
                     font-weight: 600;
-                    &::placeholder {
+                    &::placeholder { // placeholder속성을 가진 모든것들을 선택한다.
                         font-weight: 300;
                         color: rgba(0, 0, 0, 0.7);
                     }
