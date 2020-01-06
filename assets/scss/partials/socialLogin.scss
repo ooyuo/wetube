@@ -1,0 +1,28 @@
+.social-login {
+    display: flex;
+    flex-direction: column; // display: flex를 써줘야 flex-direction을 설정할 수 있다. column값을 쓰게되면 요소들이 세로로 정렬된다.
+    align-items: center;
+    width: 100%;
+    button {
+        width: 100%;
+        max-width: 320px;
+        display: flex;
+        justify-content: center; // 가운데 정렬
+        align-items: center;
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+        span {
+            margin-right: 10px;
+            color: white;
+        }
+    }
+    .social-login--github {
+        background-color: $black;
+        color: white;
+    }
+    .social-login--facebook {
+        background-color: #3a5998;
+        color: white;
+    } 
+}
