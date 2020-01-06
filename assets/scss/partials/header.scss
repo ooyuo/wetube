@@ -16,7 +16,7 @@
             }
             &:nth-child(2) { // header__column에서 두번째 요소 = input창
                 width: 100%;
-                justify-self: center; // 가운데 정렬
+                justify-self: center; // 안에있는 요소를 가운데 정렬
             }
             &:last-child { // navigator
                 justify-self: end; // 오른쪽 정렬
