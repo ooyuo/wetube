@@ -4,11 +4,11 @@
     grid-gap: 30px;
     .videoBlock:first-child,
     .videoBlock:nth-child(2) {
-        grid-column: span 3;
+        grid-column: span 3; // 동영상 하나당 grid 6개중에 3개를 사용하겠다.
     }
     .videoBlock:nth-child(3),
     .videoBlock:nth-child(4),
     .videoBlock:nth-child(5) {
-        grid-column: span 2;
+        grid-column: span 2; // 동영상 하나당 grid 6개중에 2개를 사용하겠다.
     }
 }
