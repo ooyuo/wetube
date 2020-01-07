@@ -39,6 +39,7 @@
                     font-size: 14px;
                     color: $black;
                     font-weight: 600;
+                    max-width: none;
                     &::placeholder { // placeholder속성을 가진 모든것들을 선택한다.
                         font-weight: 300;
                         color: rgba(0, 0, 0, 0.7);

@@ -12,21 +12,41 @@ body {
 
 main {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto; // 중앙정렬
     min-height: 70vh; // 브라우저의 세로길이에 맞춰 변함. 높이값의 100분의 1 단위 
 }
 
 button,
-input {
+input:not([type="file"]),
+textarea,
+.fileUpload {
     padding: 7px 10px;
     width: 100%;
+    border: none;
     border-radius: 5px;
     font-size: 14px;
     color: $black;
-    font-weight: 600,
+    font-weight: 600;
+    background-color: white;
+    max-width: 320px;
+    resize: none; // 사용자가 size를 임의로 변경하지 못하게 한다.
     &::placeholder {
         font-weight: 300;
         color: rgba(0, 0, 0, 0.7);
-    }
+    };
+}
+button {
+    border: none;   
+    background-color: #3498db;
+    color: white;   
+}
+
+button.delete {
+    background-color: $dark-red;
+}
+
+button,
+input[type="submit"] {
+    cursor: pointer;
 }
