@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     githubId: Number
 });
 
-UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
+UserSchema.plugin(passportLocalMongoose, { usernameField: "email" }); // usernameField는 username이 될 것을 명시해줘야하는데 email을 username으로 보게함
+
 
 const model = mongoose.model("User", UserSchema);
 export default model;
