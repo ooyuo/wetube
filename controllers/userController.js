@@ -1,3 +1,4 @@
+import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
 
@@ -7,7 +8,7 @@ export const getJoin = (req, res) => {
     });
 };
 
-export const postJoin = async (req, res) => {
+export const postJoin = async (req, res, next) => {
     const {
         body: {
             name,
@@ -18,7 +19,7 @@ export const postJoin = async (req, res) => {
     } = req;
 
     if (password !== password2) {
-        res.status(400);
+        res.status(400); // 잘못된 문법으로 인해 서버가 요청을 이해할 수 없음
         res.render("join", { pageTitle: "Join" });
     } else {
         try {
@@ -27,12 +28,13 @@ export const postJoin = async (req, res) => {
                 email
             }); // 계정이 생성되면 이 코드를 실행시킨다.
             await User.register(user, password);
+            next();
             
         } catch(error) {
             console.log(error);
+            res.redirect(routes.home);
         }
 
-        res.redirect(routes.home);
     }
 };
 
@@ -42,9 +44,13 @@ export const getLogin = (req, res) => {
     });
 };
 
-export const postLogin = (req, res) => {
-    res.redirect(routes.home); // res.redirect("/");
-};
+/*
+passport.authenticate은 username과 passport를 찾아보도록 설정되어짐
+*/
+export const postLogin = passport.authenticate("local", {
+    failureRedirect: routes.login,
+    successRedirect: routes.home
+});
 
 export const logout = (req, res) => {
     res.redirect(routes.home); // res.redirect("/");
