@@ -4,7 +4,9 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import passport from "passport";
+import mongoose from "mongoose";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
@@ -15,6 +17,7 @@ import "./passport";
 
 const app = express(); // server생성
 // pug와 express에는 view파일들의 위치에 관한 기본 설정이있다.
+const CokieStore = MongoStore(session);
 
 console.log(process.env.COOKIE_SECRET);
 // middleware
@@ -35,7 +38,8 @@ app.use(
     session({
         secret: process.env.COOKIE_SECRET,
         resave: true,
-        saveUninitialized: false
+        saveUninitialized: false,
+        store: new CokieStore({ mongooseConnection: mongoose.connection }) // mongoose는 이 저장소를 db.js에 저장시켜줄것임
     })
 );
 app.use(passport.initialize());
