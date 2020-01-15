@@ -44,9 +44,15 @@ export const getLogin = (req, res) => {
     });
 };
 
+export const githubLogin = passport.authenticate("github");
+
 /* cd는 passport로부터 나에게 제공되는 것임 */
 export const githubLoginCallback = (accessToken, refreshToken, profile, cd) => {
     console.log(accessToken, refreshToken, profile, cd);
+};
+
+export const postGithubLogIn = (req, res) => {
+    res.send(routes.home);
 };
 /*
 passport.authenticate은 username과 passport를 찾아보도록 설정되어짐
@@ -54,7 +60,7 @@ passport.authenticate은 username과 passport를 찾아보도록 설정되어짐
 export const postLogin = passport.authenticate("local", {
     failureRedirect: routes.login,
     successRedirect: routes.home
-});
+});         
 
 export const logout = (req, res) => {
     req.logout();
