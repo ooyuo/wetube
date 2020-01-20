@@ -16,6 +16,9 @@ import { localsMiddleware } from "./middlewares";
 import "./passport";
 
 const app = express(); // server생성
+const cors = require('cors');
+app.use(cors()); 
+
 // pug와 express에는 view파일들의 위치에 관한 기본 설정이있다.
 const CokieStore = MongoStore(session);
 

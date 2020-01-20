@@ -47,12 +47,32 @@ export const getLogin = (req, res) => {
 export const githubLogin = passport.authenticate("github");
 
 /* cd는 passport로부터 나에게 제공되는 것임 */
-export const githubLoginCallback = (accessToken, refreshToken, profile, cd) => {
-    console.log(accessToken, refreshToken, profile, cd);
+export const githubLoginCallback = async (_, __, profile, cb) => {
+    const { 
+        _json: { id, avatar_url, name, email }
+    } = profile;
+
+    try {
+        const user = await User.findOne({ email });
+        if(user) {
+            user.githubId = id;
+            user.save();
+            return cb(null, user);
+        }
+        const newUser = await User.create({
+            email,
+            name,
+            githubId: id,
+            avatarUrl: avatar_url
+        });
+        return cb(null, newUser);
+    } catch(error) {
+        return cb(error);
+    }
 };
 
 export const postGithubLogIn = (req, res) => {
-    res.send(routes.home);
+    res.redirect(routes.home);
 };
 /*
 passport.authenticate은 username과 passport를 찾아보도록 설정되어짐
