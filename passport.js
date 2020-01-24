@@ -22,7 +22,18 @@ passport.use(
         githubLoginCallback
     )
 );
-passport.serializeUser(User.serializeUser()); // passport는 쿠기에 오직 user.id만 담아서 보낸다.
-passport.deserializeUser(User.deserializeUser()); 
+passport.serializeUser(function(user, done) {
+    done(null, user._id);
+    // if you use Model.id as your idAttribute maybe you'd want
+    // done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+
 
 
