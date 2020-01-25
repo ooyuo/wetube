@@ -1,7 +1,8 @@
 import passport from "passport";
-import GithubStrategy from "passport-github";
+import GithubStrategy, { Strategy } from "passport-github";
+import FacebookStrategy from "passport-facebook";
 import User from "./models/User";
-import { githubLoginCallback } from "./controllers/userController";
+import { githubLoginCallback, facebookLoginCallback } from "./controllers/userController";
 import routes from "./routes";
 
 /*
@@ -13,14 +14,24 @@ username과 password를 쓰는 strategy를 사용한다.
 passport.use(User.createStrategy()); // createStrategy(): 이미 구성된 passport-local의 LocalStrategy를 생성한다.
 
 passport.use(
-    new GithubStrategy(
-        {
-        clientID: process.env.GH_ID,
-        clientSecret: process.env.GH_SECRET,
-        callbackURL: `http://localhost:4000${routes.githubCallback}`
-        },
-        githubLoginCallback
-    )
+  new GithubStrategy(
+    {
+    clientID: process.env.GH_ID,
+    clientSecret: process.env.GH_SECRET,
+    callbackURL: `http://localhost:4000${routes.githubCallback}`
+    },
+    githubLoginCallback
+  )
+);  
+
+passport.use(
+  new FacebookStrategy({
+    clientID: process.env.FB_ID,
+    clientSecret: process.env.FB_SECRET,
+    callbackURL: `http://localhost:4000${routes.facebookCallback}`
+  },
+  facebookLoginCallback
+  )
 );
 passport.serializeUser(function(user, done) {
     done(null, user._id);

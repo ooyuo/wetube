@@ -5,6 +5,7 @@
                 i.fab.fa-github
             |Continue with Github <!-- pug가 Continue를 태그 취급해서 파란글씨로 보인다면 | 를 앞에 붙여주면 텍스트로 인식됨 -->
     button.social-login--facebook
-        span
-            i.fab.fa-facebook
-        |Continue with Facebook
+        a(href=routes.facebook)
+            span
+                i.fab.fa-facebook
+            |Continue with Facebook
