@@ -2,20 +2,13 @@ import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
 
-export const getJoin = (req, res) => {
-    res.render("Join", {
-        pageTitle: "Join"
-    });
+export const getJoin = (req, res) => { 
+    res.render("Join", { pageTitle: "Join" });
 };
 
 export const postJoin = async (req, res, next) => {
     const {
-        body: {
-            name,
-            email,
-            password,
-            password2
-        }
+        body: { name, email, password, password2 }
     } = req;
 
     if (password !== password2) {
@@ -29,12 +22,10 @@ export const postJoin = async (req, res, next) => {
             }); // 계정이 생성되면 이 코드를 실행시킨다.
             await User.register(user, password);
             next();
-            
         } catch(error) {
             console.log(error);
             res.redirect(routes.home);
         }
-
     }
 };
 
@@ -75,9 +66,35 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     }
 };
 
-export const facebookLoginCallback = (aceessToken, refreshToken, profile, cb) => {
-    console.log(aceessToken, refreshToken, profile, cb);
+export const facebookLoginCallback = async (_, __, profile, cb) => {
+    const { _json: { id, name, email }} = profile;
+    try {
+        const user = await User.findOne({ email });
+        if(user) {
+            user.facebookId = id;
+            user.avatarUrl = `https://graph.facebook.com/${id}/picture?type=large`;
+            user.save();
+            return cb(null, user);
+        }
+        const newUser = await User.create({
+            email,
+            name,
+            facebookId: id,
+            avatarUrl: `https://graph.facebook.com/${id}/picture?type=large`
+        });
+        return cb(null, newUser);
+    } catch(error) {
+        return cb(error);
+    }
 };
+
+/*
+passport.authenticate은 username과 passport를 찾아보도록 설정되어짐
+*/
+export const postLogin = passport.authenticate("local", {
+    failureRedirect: routes.login,
+    successRedirect: routes.home
+}); 
 
 export const postGithubLogIn = (req, res) => {
     res.redirect(routes.home);
@@ -86,13 +103,7 @@ export const postGithubLogIn = (req, res) => {
 export const postFacebookLogin = (req, res) => {
     res.redirect(routes.home);
 };
-/*
-passport.authenticate은 username과 passport를 찾아보도록 설정되어짐
-*/
-export const postLogin = passport.authenticate("local", {
-    failureRedirect: routes.login,
-    successRedirect: routes.home
-});         
+        
 
 export const logout = (req, res) => {
     req.logout();
