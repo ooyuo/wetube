@@ -131,6 +131,25 @@ export const userDetail = async (req, res) => {
 export const getEditProfile = (req, res) => res.render("editProfile", {
     pageTitle: "Edit Profile"
 });
+
+export const postEditProfile = async (req, res) => {
+    const {
+        body: { name, email },
+        file
+    } = req;
+
+    try {
+        await User.findByIdAndUpdate(req.user.id, {
+            name,
+            email, 
+            avatarUrl: file ? file.path : req.user.avatarUrl
+        });
+        res.redirect(routes.me);
+    } catch(error) {
+        res.render(routes.editProfile, { pageTitle: "Edit Profile "});
+    }
+};
+
 export const changePassword = (req, res) => res.render("changePassword", {
     pageTitle: "Change Password"
 }); // ""안에있는 라우터명은 routes파일의 객체명과 일치해야함
