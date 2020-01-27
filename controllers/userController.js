@@ -146,10 +146,34 @@ export const postEditProfile = async (req, res) => {
         });
         res.redirect(routes.me);
     } catch(error) {
-        res.render(routes.editProfile, { pageTitle: "Edit Profile "});
+        res.redirect(routes.editProfile, { pageTitle: "Edit Profile "});
     }
 };
 
-export const changePassword = (req, res) => res.render("changePassword", {
+export const getChangePassword = (req, res) => res.render("changePassword", {
     pageTitle: "Change Password"
 }); // ""안에있는 라우터명은 routes파일의 객체명과 일치해야함
+
+export const postChangePassword = async (req, res) => {
+    const { 
+        body: {
+            oldPassword,
+            newPassword,
+            newPassword1
+        }
+    } = req;
+    
+    try {
+        if(newPassword !== newPassword1) {
+            res.status(400);
+            res.redirect(routes.changePassword, { pageTitle: "Change Password" });
+            return;
+        }
+        await req.user.changePassword(oldPassword, newPassword);
+        res.redirect(routes.me);
+    } catch(error) {
+        res.status(400);
+        res.redirect(routes.changePassword, { pageTitle: "Change Password" });
+    }
+
+}
