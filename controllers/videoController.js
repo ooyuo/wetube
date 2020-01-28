@@ -44,8 +44,11 @@ export const postUpload = async (req, res) => {
     const newVideo = await Video.create({
         fileUrl: path,
         title,
-        description
+        description,
+        creator: req.user.id // request에는 항상 user가 있다. 로그인을 했기때문에..
     });
+    req.user.videos.push(newVideo.id);
+    req.user.save();
 
     res.redirect(routes.videoDetail(newVideo.id));
 };
@@ -56,7 +59,8 @@ export const videoDetail = async (req, res) => {
     } = req;
 
     try {
-        const video = await Video.findById(id);
+        const video = await Video.findById(id).populate("creator"); // populate(): 객체를 데려온다. 객체로 선언된 경우에만 사용할 수 있다.
+        console.log(video); 
         res.render("videoDetail", { pageTitle: video.title, video });
     } catch (error) {
         console.log(error);
