@@ -76,7 +76,11 @@ export const getEditVideo = async (req, res) => {
 
     try {
         const video = await Video.findById(id);
-        res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
+        if (String(video.creator) !== req.user.id) {    
+            throw Error(); // try문안에서 error가 발생할 경우 자동적으로 catch문으로 가게되어있음
+        } else {
+            res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
+        }
     } catch (error) {
         res.redirect(routes.home);
     }
