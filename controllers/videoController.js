@@ -60,7 +60,7 @@ export const videoDetail = async (req, res) => {
 
     try {
         const video = await Video.findById(id).populate("creator"); // populate(): 객체를 데려온다. 객체로 선언된 경우에만 사용할 수 있다.
-        console.log(video); 
+
         res.render("videoDetail", { pageTitle: video.title, video });
     } catch (error) {
         console.log(error);
@@ -107,7 +107,12 @@ export const deleteVideo = async (req, res) => {
     } = req;
 
     try {
-        await Video.findOneAndRemove({ _id: id });
+        const video = await Video.findById(id);
+        if (String(video.creator) !== req.user.id) {    
+            throw Error(); // try문안에서 error가 발생할 경우 자동적으로 catch문으로 가게되어있음
+        } else {
+            await Video.findOneAndRemove({ _id: id });
+        }
     } catch (error) {
         console.log(error);
     }
