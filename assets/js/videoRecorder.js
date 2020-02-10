@@ -4,7 +4,7 @@ const videoPreview = document.getElementById("jsvideoPreview");
 
 let streamObject;
 
-const handleVideoData = (event) => {
+const handleVideoData = event => {
     console.log(event);
 }
 
@@ -25,7 +25,6 @@ const getVideo = async () => {
         videoPreview.play();
         recordBtn.innerHTML = "Stop recording";
         streamObject = stream;
-        console.log("here");
         startRecording();
     } catch(error) {
         recordBtn.innerHTML = "😝 Cant record";
