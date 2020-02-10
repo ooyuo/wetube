@@ -153,7 +153,7 @@ export const postAddComment = async (req, res) => {
     try {
         const video = await Video.findById(id);
         const newComment = await Comment.create({
-            test: comment,
+            text: comment,
             creator: user.id
         });  // creator로 comment를 만든다.
         video.comments.push(newComment.id);
