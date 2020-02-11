@@ -63,7 +63,7 @@ export const videoDetail = async (req, res) => {
         const video = await Video.findById(id)
         .populate("creator")
         .populate("comments"); // populate(): 객체를 데려온다. 객체로 선언된 경우에만 사용할 수 있다.
-
+        console.log(video);
         res.render("videoDetail", { pageTitle: video.title, video });
     } catch (error) {
         console.log(error);
@@ -88,7 +88,6 @@ export const getEditVideo = async (req, res) => {
         res.redirect(routes.home);
     }
 };
-
 
 export const postEditVideo = async (req, res) => {
     const {
@@ -164,3 +163,23 @@ export const postAddComment = async (req, res) => {
         res.end();
     }
 };
+
+export const postRemoveComment = async (req, res) => {
+
+    const {
+        body: { comment },
+    } = req;
+    const commentData = await Comment.findById(comment);
+    try {
+        if (String(commentData.creator) !== req.user.id) {
+            throw Error();
+        } else {
+            await Comment.findOneAndRemove({ _id: comment });
+        }
+    } catch(error) {
+        res.status(400);
+    } finally {
+        res.end();
+    }
+};
+
