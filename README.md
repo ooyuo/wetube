@@ -57,8 +57,6 @@
 
 Cloning Youtube with Vanilla and NodeJS
 
-유저들은 영상 시청, 업로드, 자기 자신의 비디오를 녹화할 수 있고, 서로의 영상에 댓글을 달 수 있으며 영상을 검색할 수 있습니다.
-
 
 
 ### Built With
