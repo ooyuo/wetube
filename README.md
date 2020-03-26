@@ -70,7 +70,7 @@ Cloning Youtube with Vanilla and NodeJS
 * [Pug](https://pugjs.org/)
 
 
-## Pages
+### Pages
 
 - [x] Home
 - [x] Join
