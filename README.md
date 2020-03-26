@@ -18,14 +18,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -47,6 +39,7 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
+  * [Pages](#Pages)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
@@ -60,7 +53,7 @@
 
 ## 🧐 About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](./assets/images/screenshot.png)
 
 Cloning Youtube with Vanilla and NodeJS
 
@@ -80,7 +73,7 @@ Cloning Youtube with Vanilla and NodeJS
 * Pug
 
 
-## Pages:
+## Pages
 
 - [x] Home
 - [x] Join
