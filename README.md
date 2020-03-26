@@ -130,7 +130,7 @@ npm install
 
 <!-- LICENSE -->
 
-## 👩‍💻 License
+## 👻 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
@@ -138,7 +138,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 
-## ☎ Contact
+## 🐱‍🏍 Contact
 
 doyounjeong: doyounjeong0@gmail.com
 
