@@ -61,14 +61,13 @@ Cloning Youtube with Vanilla and NodeJS
 
 ### Built With
 
-* MongoDB
-* NodeJS
-* ES6
-* AWS
-* Heroku
-* SaSS
-* WebPack
-* Pug
+* [MongoDB](https://www.mongodb.com/)
+* [NodeJS](https://nodejs.org/en/)
+* [AWS](https://aws.amazon.com/)
+* [Heroku](https://www.heroku.com/)
+* [SaSS](https://sass-lang.com/)
+* [WebPack](https://webpack.js.org/)
+* [Pug](https://pugjs.org/)
 
 
 ## Pages
