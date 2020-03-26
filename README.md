@@ -53,7 +53,7 @@
 
 ## 🧐 About The Project
 
-[![Product Name Screen Shot][product-screenshot]](./assets/images/screenshot.png)
+![wetube](./assets/images/screenshot.png)
 
 Cloning Youtube with Vanilla and NodeJS
 
