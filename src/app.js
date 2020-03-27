@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import passport from "passport";
 import mongoose from "mongoose";
 import session from "express-session";
+import path from "path";
 import MongoStore from "connect-mongo";
 import routes from "./routes";
 import { localsMiddleware } from "./middlewares";
@@ -32,8 +33,8 @@ app.set("view engine", "pug");
 그냥 file만 확인하는 것.
 directory는 "upload/" => "uploads/"로 가면 "uploads"라는 directory로 들어간다.
 */
-app.use("/uploads", express.static("uploads"));
-app.use("/static", express.static("static"));
+app.set("views", path.join(__dirname, "views"));
+app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(cookieParser()); // cookie를 전달받아서 사용할 수 있도                                                                                                                                                                                                                                                                                                                                                                                록 만들어주는 미들웨어
 app.use(bodyParser.json()); // 사용자가 웹사이트로 전달하는 정보들을 검사하는 미들웨어, request정보에서 form이나 json형태로된 body를 검사한다
 app.use(bodyParser.urlencoded({extended: true})); // body의 url을 얻게 해줌

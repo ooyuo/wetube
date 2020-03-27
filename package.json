@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "cloning youtube with vanilla and nodejs",
   "scripts": {
-    "dev:server": "nodemon --exec babel-node init.js --delay 2 --ignore 'scss'",
-    "dev:assets": "cross-env WEBPACK_ENV=npx webpack --mode development -w",
-    "build": "webpack --mode development  --config ./webpack.config.js",
-    "build:assets": "cross-env WEBPACK_ENV=production webpack",
+    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static' ",
+    "dev:assets": "cd src && cross-env WEBPACK_ENV=development webpack -w",
+    "build:assets": "cd src && cross-env WEBPACK_ENV=production webpack",
     "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
-    "webpack": "webpack",
-    "dev": "npm run webpack -- --mode development --watch",
-    "tunnel": "ngrok http 4000"
+    "copyAll": "xcopy .\\src\\static .\\build\\static /s /y && xcopy .\\src\\views .\\build\\views /s /y",
+    "build": "npm run build:server && npm run build:assets && npm run copyAll",
+    "prebuild": "rd /s /q build",
+    "tunnel": "ngrok http 4000",
+    "start": "node build/init.js"
   },
   "author": "doyoun jeong",
   "license": "ISC",
@@ -59,6 +60,7 @@
     "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.17.0",
     "nodemon": "^2.0.1",
