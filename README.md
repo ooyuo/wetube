@@ -24,7 +24,7 @@
 
 <p align="center">
   <a href="https://https://github.com/ooyuo/wetube">
-    <img src="./assets/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./src/assets/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">We-tube</h3>
@@ -53,7 +53,7 @@
 
 ## 🧐 About The Project
 
-![wetube](./assets/images/screenshot.png)
+![wetube](./src/assets/images/screenshot.png)
 
 Cloning Youtube with Vanilla and NodeJS
 
